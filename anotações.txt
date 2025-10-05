@@ -1,0 +1,17 @@
+json usado de base pra teste em Cliente:
+{
+  "cpf": "55566677788",
+  "nomeCompleto": "Ana Frontes",
+  "dataAniversario": "1995-07-22",
+  "enderecoCompleto": "Av. Brasil, 250, Belo Horizonte, MG",
+  "celular": "31988887777",
+  "email": "ana.frontes@email.com",
+  "senha": "senhaTeste123",
+  "pagaMeiaEntrada": true
+}
+
+Acesso:
+{
+  "dataHora": "2025-10-05T16:45:00",
+  "clienteId": 2
+}
