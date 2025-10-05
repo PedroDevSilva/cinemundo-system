@@ -19,7 +19,7 @@ const config = {
   },
 };
 
-console.log("Config do MSSQL:", config); // 🔹 debug
+console.log("Config do MSSQL:", config);
 
 let pool;
 

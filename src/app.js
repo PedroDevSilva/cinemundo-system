@@ -1,6 +1,9 @@
 import express from "express";
 const app = express();
 
-app.use(express.json());
 
+import clienteRoutes from "./routes/clienteRoutes.js";
+
+app.use(express.json());
+app.use("/Cliente", clienteRoutes); //agora utiliza a rota cliente
 export default app;
