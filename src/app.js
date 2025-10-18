@@ -5,11 +5,13 @@ import clienteRoutes from "./routes/clienteRoutes.js";
 import acessoRoutes from "./routes/acessoRoutes.js";
 import filmeRoutes from "./routes/filmeRoutes.js";
 import generoRoutes from "./routes/generoRoutes.js";
+import sessaoRoutes from "./routes/sessaoRoutes.js";
 
 app.use(express.json());
 app.use("/Cliente", clienteRoutes); //agora utiliza a rota cliente
 app.use("/Acesso", acessoRoutes);
 app.use("/Filme", filmeRoutes);
 app.use("/Genero", generoRoutes);
+app.use("/Sessao", sessaoRoutes);
 
 export default app;
