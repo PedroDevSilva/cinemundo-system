@@ -24,7 +24,7 @@ export async function insertSessao(req, res) {
         console.log("REQ BODY:", req.body);
     const { data,horarioInicial,horarioFinal,linguaOrigem,lingualegenda,linguaDublagem} = req.body;
     await createSessao(data,horarioInicial,horarioFinal,linguaOrigem,lingualegenda,linguaDublagem);
-    res.status(201).json({ message: "Sala criada com sucesso!" });
+    res.status(201).json({ message: "Sessão criada com sucesso!" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -37,7 +37,7 @@ export async function editSessao(req,res) {
         const id = parseInt(req.params.id);
         const { data,horarioInicial,horarioFinal,linguaOrigem,lingualegenda,linguaDublagem } = req.body;
         await updateSessao(id, {data,horarioInicial,horarioFinal,linguaOrigem,lingualegenda,linguaDublagem})
-        res.status(200).json({ message: "Sala atualizada com sucesso!"})
+        res.status(200).json({ message: "Sessão atualizada com sucesso!"});
     } catch (err) {
         res.status(500).json({ error: err.message})
     }

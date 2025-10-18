@@ -7,6 +7,8 @@ import filmeRoutes from "./routes/filmeRoutes.js";
 import generoRoutes from "./routes/generoRoutes.js";
 import formaPagamentoRoutes from "./routes/formaPagamentoRoutes.js";
 import pagamentoRoutes from "./routes/pagamentoRoutes.js";
+import sessaoRoutes from "./routes/sessaoRoutes.js";
+import salaRoutes from "./routes/salaRoutes.js";
 
 app.use(express.json());
 app.use("/Cliente", clienteRoutes); //agora utiliza a rota cliente
@@ -15,5 +17,7 @@ app.use("/Filme", filmeRoutes);
 app.use("/Genero", generoRoutes);
 app.use("/FormaPagamento", formaPagamentoRoutes);
 app.use("/Pagamento", pagamentoRoutes);
+app.use("/Sessao", sessaoRoutes);
+app.use("/Sala", salaRoutes);
 
 export default app;
