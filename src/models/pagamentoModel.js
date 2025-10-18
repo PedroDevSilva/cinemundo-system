@@ -19,4 +19,4 @@ export async function createPagamento (dataHora, valorPago, formaPagamentoId) {
     .input("valorPago",sql.Decimal(10,2),valorPago)
     .input("formaPagamentoId",sql.Int,formaPagamentoId)
     .query("insert into Pagamento (dataHora, valorPago, formaPagamentoId) values (@dataHora, @valorPago, @formaPagamentoId)");
-} 
+}
