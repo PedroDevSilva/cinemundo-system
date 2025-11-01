@@ -2,7 +2,7 @@ import mssql from "mssql";
 import dotenv from "dotenv";
 import path from "path";
 
-dotenv.config({ path: path.resolve('../.env') });
+dotenv.config({ path: path.resolve('.../.env') });
 
 
 const sql = mssql;
@@ -26,7 +26,7 @@ let pool;
 async function connectDB() {
   if (!pool) {
     pool = await sql.connect(config);
-    console.log("✅ Conectado ao banco de dados!");
+    console.log("Conectado ao banco de dados!");
   }
   return pool;
 }
