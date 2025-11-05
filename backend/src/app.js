@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 const app = express();
 
 import clienteRoutes from "./routes/clienteRoutes.js";
@@ -10,6 +11,7 @@ import pagamentoRoutes from "./routes/pagamentoRoutes.js";
 import ingressoRoutes from "./routes/ingressoRoutes.js";
 
 app.use(express.json());
+app.use(cors({ origin: "*" }));
 app.use("/Cliente", clienteRoutes); //agora utiliza a rota cliente
 app.use("/Acesso", acessoRoutes);
 app.use("/Filme", filmeRoutes);
