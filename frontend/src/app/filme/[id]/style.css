@@ -1,0 +1,40 @@
+.pagina-filme {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  background: #0c0c0c;
+  color: white;
+  min-height: 100vh;
+}
+
+.poster-container {
+  flex: 1;
+}
+
+.poster-filme {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #000;
+}
+
+.info-filme {
+  flex: 2;
+}
+
+.titulo-filme {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.sinopse {
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.carregando,
+.erro {
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+  font-size: 24px;
+}

@@ -1,4 +1,6 @@
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export const metadata = {
   title: "CineMundo",
@@ -8,15 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body
-        style={{
-          backgroundColor: "black",
-          color: "white",
-          margin: 0,
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
+      <body>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -9,15 +9,26 @@ export async function getAllFilmes(req, res) {
   }
 }
 
-export async function getFilme (req,res) {
-    try {
-        const id = parseInt(req.params.id);
-        const result = await getFilmeId(id);
-        res.status(200).json(result);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+export async function getFilme(req, res) {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("ID recebido:", id);   // <--- AQUI
+
+    const result = await getFilmeId(id);
+    console.log("Resultado do banco:", result); // <--- AQUI
+
+    if (!result) {
+      return res.status(404).json({ error: "Filme não encontrado" });
     }
+
+    res.status(200).json(result);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 }
+
+
 
 export async function insertFilme(req, res) {
   try {

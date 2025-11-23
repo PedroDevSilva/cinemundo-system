@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import FilmeCard from "../components/FilmeCard";
-import Footer from "../components/Footer";
+import { Clapperboard } from "lucide-react";
+import Carrossel from "../components/Carrossel";
+import FilmeCard from "../components/FilmeCard"
 
 export default function Home() {
   const [filmes, setFilmes] = useState([]);
@@ -25,20 +25,28 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <Header />
+    <div className="w-screen h-screen">
       <main className="container">
-        <h1 className="titulo">Em Cartaz</h1>
-
+        <h1 className="titulo flex gap-2 items-center">
+          <Clapperboard />
+          Destaques da semana
+        </h1>
+        <br></br>
+        <br></br>
         {erro && <p className="erro">{erro}</p>}
-        
+
+        <Carrossel filmes={filmes.slice(0, 5)} />
+        <h2 className="titulo flex gap-2 items-center">
+          Filmes disponíveis
+        </h2>
+
         <div className="grid-filmes">
-          {filmes.map((filme) => (
+          {filmes.slice(6,10).map((filme) => (
             <FilmeCard key={filme.id} filme={filme} />
           ))}
         </div>
+        
       </main>
-      <Footer />
     </div>
   );
 }

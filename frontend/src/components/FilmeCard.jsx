@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function FilmeCard({ filme }) {
   return (
     <div className="filme-card">
-      <a href="#">
+      <Link href={`/filme/${filme.id}`}>
         <img
           src={filme.poster}
           alt={filme.titulo}
@@ -9,9 +11,11 @@ export default function FilmeCard({ filme }) {
         />
         <div className="info">
           <h3>{filme.titulo}</h3>
-          <p className="filme-descricao">{filme.sinopse?.length > 100 ? filme.sinopse.slice(0, 100) + "..." : filme.sinopse}</p>
+          <p className="filme-descricao">
+            {filme.sinopse?.length > 100 ? filme.sinopse.slice(0, 100) + "..." : filme.sinopse}
+          </p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
