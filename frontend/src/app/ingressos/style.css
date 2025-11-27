@@ -1,0 +1,31 @@
+/* INGRESSOS */
+.lista-ingressos {
+  display: grid;
+  gap: 25px;
+  margin-top: 30px;
+  padding-bottom: 40px;
+}
+
+.ingresso-card {
+  background: #111;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.13);
+  transition: 0.25s ease;
+}
+
+.ingresso-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.25);
+}
+
+.ingresso-card h3 {
+  color: #facc15;
+  margin-bottom: 10px;
+}
+
+.ingresso-card p {
+  color: #ccc;
+  margin: 6px 0;
+}
