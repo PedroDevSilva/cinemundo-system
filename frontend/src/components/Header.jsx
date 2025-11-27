@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 export default function Header() {
@@ -14,9 +15,22 @@ export default function Header() {
         <ul>
           <li><Link href="#">Filmes</Link></li>
           <li><Link href="#">Sessões</Link></li>
-          <li><Link href="#">Login</Link></li>
+          <li><Link href="/login">Login</Link></li>
+          <li>
+            <Link href="/"> 
+              <button
+                onClick={() => {
+                  localStorage.removeItem("usuarioLogado");
+                  window.location.href = "/";
+                }}
+                >
+                Logout
+              </button>
+            </Link>
+          </li>
         </ul>
       </nav>
+      
     </header>
   );
 }
