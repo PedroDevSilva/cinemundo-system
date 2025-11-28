@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Clapperboard } from "lucide-react";
 import Carrossel from "../components/Carrossel";
-import FilmeCard from "../components/FilmeCard"
+import FilmeCard from "../components/FilmeCard";
 
 export default function Home() {
   const [filmes, setFilmes] = useState([]);
@@ -24,28 +23,52 @@ export default function Home() {
     carregarFilmes();
   }, []);
 
+  const handleFilmeClick = (filme) => {
+    window.location.href = `/filme/${filme.id}`;
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const ativo = document.querySelector(".carousel-item.active img");
+      if (ativo && !ativo.dataset.clickHandler) {
+        ativo.dataset.clickHandler = "true";
+        ativo.style.cursor = "pointer"; 
+
+        ativo.onclick = () => {
+          const filme = filmes.find((f) => f.titulo === ativo.alt);
+          if (filme) handleFilmeClick(filme);
+        };
+      }
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [filmes]);
+
   return (
-    <div className="w-screen h-screen">
+    <div className="home-wrapper">
       <main className="container">
-        <h1 className="titulo flex gap-2 items-center">
-          <Clapperboard />
-          Destaques da semana
+        <h1 className="titulo flex gap-2 items-center justify-center">
+          🎬 Destaques da semana
         </h1>
-        <br></br>
-        <br></br>
+
         {erro && <p className="erro">{erro}</p>}
 
+        {/* Carrossel intacto */}
         <Carrossel filmes={filmes.slice(0, 5)} />
-        <h2 className="titulo flex gap-2 items-center">
-          Filmes disponíveis
+
+        <h2 className="titulo flex gap-2 items-center justify-center">
+          📚 Filmes disponíveis
         </h2>
 
         <div className="grid-filmes">
-          {filmes.slice(6,10).map((filme) => (
-            <FilmeCard key={filme.id} filme={filme} />
+          {filmes.map((filme) => (
+            <FilmeCard
+              key={filme.id}
+              filme={filme}
+              onClick={() => handleFilmeClick(filme)}
+            />
           ))}
         </div>
-        
       </main>
     </div>
   );

@@ -13,7 +13,8 @@ export default function Header() {
 
       <nav className="nav">
         <ul>
-          <li><Link href="#">Filmes</Link></li>
+          <li><Link href="/ingressos">Ingressos</Link></li>
+          <li><Link href="/listafilme">Filmes</Link></li>
           <li><Link href="#">Sessões</Link></li>
           <li><Link href="/login">Login</Link></li>
           <li>
