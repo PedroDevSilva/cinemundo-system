@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #000;
+  background-color: #0e0e0e;
   color: #fff;
   margin: 0;
   font-family: Arial, sans-serif;
@@ -53,8 +53,8 @@ body {
 .nav li a:hover {
   background-color: #000000;
   color: #ffffff;
-  border-color: #facc15;
-  box-shadow: 0 0 10px #facc15;
+  border-color: #cc0000;
+  box-shadow: 0 0 10px #cc0000;
   transform: translateY(-3px);
 }
 
@@ -65,7 +65,7 @@ body {
   left: 50%;
   width: 0%;
   height: 2px;
-  background-color: #facc15;
+  background-color: #cc0000;
   transition: all 0.2s ease-in-out;
   transform: translateX(-50%);
 }
@@ -82,7 +82,7 @@ body {
 
 .titulo {
   text-align: center;
-  color: #facc15;
+  color: #cc0000;
   margin-bottom: 40px;
   font-size: 2rem;
 }

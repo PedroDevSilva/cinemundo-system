@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { UserRound } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="bg-[#111] border border-[#222] rounded-xl p-10 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-[#facc15] text-center mb-4">
+        <h2 className="text-3xl font-bold text-[#cc0000] text-center mb-4">
           Login Cine Mundo
         </h2>
         <p className="text-gray-400 text-center mb-8">
@@ -53,7 +54,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#444] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#facc15] focus:ring-2 focus:ring-[#facc15]/30 transition"
+            className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#444] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#cc0000] focus:ring-2 focus:ring-[#facc15]/30 transition"
           />
           <input
             type="password"
@@ -61,18 +62,18 @@ export default function Login() {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#444] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#facc15] focus:ring-2 focus:ring-[#facc15]/30 transition"
+            className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#444] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#cc0000] focus:ring-2 focus:ring-[#facc15]/30 transition"
           />
 
           <button
             type="submit"
-            className="w-full py-3 bg-transparent border border-[#facc15] text-[#facc15] rounded-lg font-bold text-lg hover:bg-[#facc15] hover:text-black transition-all duration-200 hover:shadow-lg hover:shadow-[#facc15]/30"
+            className="w-full py-3 bg-transparent border border-[#cc0000] text-[#cc0000] rounded-lg font-bold text-lg hover:bg-[#facc15] hover:text-black transition-all duration-200 hover:shadow-lg hover:shadow-[#facc15]/30"
           >
             Entrar na Conta
           </button>
         </form>
 
-        <p className="text-center mt-6 text-[#facc15] min-h-6">
+        <p className="text-center mt-6 text-[#cc0000] min-h-6">
           {mensagem}
         </p>
       </div>

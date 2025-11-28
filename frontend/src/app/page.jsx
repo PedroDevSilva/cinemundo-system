@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Carrossel from "../components/Carrossel";
 import CardFilme from "../components/FilmeCard";
+import { Film } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 export default function PaginaInicial() {
   const [filmes, setFilmes] = useState([]);
@@ -61,7 +63,9 @@ export default function PaginaInicial() {
     <div className="home-wrapper">
       <main className="container">
         <h1 className="titulo flex gap-2 items-center justify-center">
+          <Star />
           Destaques da semana
+          <Star />
         </h1>
 
         {mensagemErro && <p className="erro">{mensagemErro}</p>}
@@ -70,7 +74,9 @@ export default function PaginaInicial() {
         <Carrossel filmes={filmes.slice(0, 5)} />
 
         <h2 className="titulo flex gap-2 items-center justify-center mt-10">
+          <Film />
           Todos os filmes disponíveis
+          <Film />  
         </h2>
 
         <div className="grid-filmes">
