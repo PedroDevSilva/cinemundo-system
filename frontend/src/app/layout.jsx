@@ -11,6 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body>
+        <head>
+          <link rel="icon" href="/icon.svg" type="img/svg+xml"></link>
+        </head>
         <Header />
         {children}
         <Footer />
