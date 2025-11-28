@@ -17,32 +17,17 @@ export default function Login() {
     try {
       const res = await fetch("http://localhost:8081/Cliente");
       const clientes = await res.json();
-
-      const usuario = clientes.find(
-        (c) => c.email === email && c.senha === senha
-      );
+      const usuario = clientes.find(c => c.email === email && c.senha === senha);
 
       if (!usuario) {
-        setMensagem("Email ou senha errados!");
+        setMensagem("Email ou senha incorretos!");
         return;
       }
 
-      // salva o usuario logado
       localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
-
-      // insere na tabela acesso
-      await fetch("http://localhost:8081/Acesso", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          clienteId: usuario.id,
-          dataHora: new Date().toISOString(),
-        }),
-      });
-
-      setMensagem("Logado com sucesso!");
-
-      // volta p ultima pag
+      await fetch("http://localhost:8081/Acesso", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ clienteId: usuario.id, dataHora: new Date().toISOString() }) });
+      
+      setMensagem("Login feito com sucesso!");
       const voltarPara = sessionStorage.getItem("voltarPara") || "/";
       sessionStorage.removeItem("voltarPara");
       router.push(voltarPara);
@@ -53,37 +38,44 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+      <div className="bg-[#111] border border-[#222] rounded-xl p-10 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-[#facc15] text-center mb-4">
+          Login Cine Mundo
+        </h2>
+        <p className="text-gray-400 text-center mb-8">
+          Entre com seu e-mail e senha
+        </p>
 
-        <form onSubmit={fazerLogin}>
+        <form onSubmit={fazerLogin} className="space-y-5">
           <input
             type="email"
-            placeholder="Seu email"
+            placeholder="seu@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 border rounded mb-4"
             required
+            className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#444] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#facc15] focus:ring-2 focus:ring-[#facc15]/30 transition"
           />
           <input
             type="password"
-            placeholder="Sua senha"
+            placeholder="••••••••"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
-            className="w-full p-3 border rounded mb-4"
             required
+            className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#444] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#facc15] focus:ring-2 focus:ring-[#facc15]/30 transition"
           />
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700"
+            className="w-full py-3 bg-transparent border border-[#facc15] text-[#facc15] rounded-lg font-bold text-lg hover:bg-[#facc15] hover:text-black transition-all duration-200 hover:shadow-lg hover:shadow-[#facc15]/30"
           >
-            Entrar
+            Entrar na Conta
           </button>
         </form>
 
-        <p className="mt-4 text-center text-sm">{mensagem}</p>
+        <p className="text-center mt-6 text-[#facc15] min-h-6">
+          {mensagem}
+        </p>
       </div>
     </div>
   );

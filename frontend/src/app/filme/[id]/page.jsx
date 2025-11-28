@@ -13,7 +13,7 @@ export default function FilmeDescricao({ params }) {
   // pega id do cliente logado
   const getClienteId = () => {
     try {
-      const dados = localStorage.getItem("usuarioLogado");
+      const dados = localStorage.getItem("usuarioLogado");//armazena usuario logado
       if (!dados) return null;
       const usuario = JSON.parse(dados);
       return usuario.id || null;
@@ -91,10 +91,10 @@ export default function FilmeDescricao({ params }) {
     }
   }
 
-  // se nao houver carregado o filme, aparece isso
+  // se nao tiver carregado o filme, aparece isso
   if (!filme)
     return (
-      <div className="flex items-center justify-center min-h-screen text-3xl font-bold text-green-600">
+      <div className="flex items-center justify-center min-h-screen text-3xl font-bold text-[#facc15]">
         Carregando filme...
       </div>
     );
@@ -103,7 +103,7 @@ export default function FilmeDescricao({ params }) {
     <>
       {/* conteudo da pag do filme */}
       <div className="max-w-7xl mx-auto p-8">
-        <div className="grid md:grid-cols-2 gap-12 bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-12 bg-[#111] rounded-3xl overflow-hidden border border-[#222] shadow-2xl shadow-[#facc15]/10">
           <img
             src={filme.poster}
             alt={filme.titulo}
@@ -111,28 +111,28 @@ export default function FilmeDescricao({ params }) {
           />
 
           <div className="p-12 flex flex-col justify-center">
-            <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            <h1 className="text-6xl font-bold mb-6 text-[#facc15]">
               {filme.titulo}
             </h1>
 
-            <p className="text-xl mb-8 text-gray-700 leading-relaxed">
-              <strong>Sinopse:</strong> {filme.sinopse}
+            <p className="text-xl mb-8 text-gray-300 leading-relaxed">
+              <strong className="text-[#facc15]">Sinopse:</strong> {filme.sinopse}
             </p>
 
-            <div className="space-y-4 text-lg mb-12">
-              <p><strong>Diretor:</strong> {filme.diretor}</p>
-              <p><strong>Ano:</strong> {filme.anoLancamento}</p>
-              <p><strong>Duração:</strong> {filme.duracao} minutos</p>
+            <div className="space-y-4 text-lg mb-12 text-gray-300">
+              <p><strong className="text-[#facc15]">Diretor:</strong> {filme.diretor}</p>
+              <p><strong className="text-[#facc15]">Ano:</strong> {filme.anoLancamento}</p>
+              <p><strong className="text-[#facc15]">Duração:</strong> {filme.duracao} minutos</p>
             </div>
 
             <button
               onClick={comprarIngresso}
               disabled={carregandoCompra}
-              className={`py-6 px-12 rounded-2xl text-3xl font-bold text-white transition-all transform hover:scale-105 shadow-2xl ${
-                carregandoCompra
-                  ? "bg-gray-600 cursor-not-allowed"
-                  : "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
-              }`}
+              className={`w-full max-w-md mx-auto py-6 px-12 rounded-xl text-2xl font-bold transition-all duration-300 
+                ${carregandoCompra 
+                  ? "bg-[#333] text-gray-500 cursor-not-allowed border border-[#444]" 
+                  : "bg-transparent border-2 border-[#facc15] text-[#facc15] hover:bg-[#facc15] hover:text-black hover:shadow-2xl hover:shadow-[#facc15]/40 hover:-translate-y-1"
+                }`}
             >
               {carregandoCompra ? "Processando compra..." : "Comprar Ingresso - R$ 35,90"}
             </button>
@@ -140,7 +140,7 @@ export default function FilmeDescricao({ params }) {
         </div>
       </div>
 
-      {/* PopUp depois de comprar o ingresso com sucesso */}
+      {/* puxa o componente popup */}
       {showPopup && (
         <PopupSucesso
           mensagem="PARABÉNS! Seu ingresso foi comprado com sucesso! Divirta-se no cinema!"

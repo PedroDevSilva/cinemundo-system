@@ -98,7 +98,6 @@ body {
   justify-items: center;
 }
 
-/* FILME CARD */
 .filme-card {
   width: 230px;
   background-color: #111;
@@ -206,7 +205,6 @@ body {
   opacity: 0.7;
 }
 
-/* POPUP */
 .popup-overlay {
   position: fixed;
   top: 0;

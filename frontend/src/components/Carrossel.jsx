@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function Carrossel({ filmes }) {
   const [index, setIndex] = useState(0);
 
-  // troca automática
+  // sistema com timer pra trocar de filmes de destaque
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((i) => (i + 1) % filmes.length);
@@ -32,7 +32,7 @@ export default function Carrossel({ filmes }) {
         {filmes.map((filme, i) => {
           const diff = (i - index + filmes.length) % filmes.length;
 
-          // posições do carrossel
+          // lista das posicoes
           let style = {};
 
           if (diff === 0) {

@@ -2,70 +2,83 @@
 
 import { useEffect, useState } from "react";
 import Carrossel from "../components/Carrossel";
-import FilmeCard from "../components/FilmeCard";
+import CardFilme from "../components/FilmeCard";
 
-export default function Home() {
+export default function PaginaInicial() {
   const [filmes, setFilmes] = useState([]);
-  const [erro, setErro] = useState("");
+  const [mensagemErro, setMensagemErro] = useState("");
 
+  // busca os filmes do endpoint filme quando abre a página
   useEffect(() => {
-    async function carregarFilmes() {
+    const buscarFilmes = async () => {
       try {
-        const res = await fetch("http://localhost:8081/filme");
-        if (!res.ok) throw new Error("Erro ao carregar filmes");
-        const data = await res.json();
-        setFilmes(data);
-      } catch (err) {
-        setErro("Falha na conexão com o servidor");
-        console.error(err);
+        const resposta = await fetch("http://localhost:8081/filme");
+
+        if (!resposta.ok) {
+          throw new Error("Deu erro na hora de pegar os filmes");
+        }
+
+        const listaRecebida = await resposta.json();
+        setFilmes(listaRecebida);
+      } catch (erro) {
+        setMensagemErro("Não conseguiu conectar no servidor, verifica se o backend tá rodando");
+        console.log("Erro completo:", erro);
       }
-    }
-    carregarFilmes();
+    };
+
+    buscarFilmes();
   }, []);
 
-  const handleFilmeClick = (filme) => {
+  // função pra ir pra página do filme clicado
+  const abrirPaginaDoFilme = (filme) => {
     window.location.href = `/filme/${filme.id}`;
   };
 
+  // gambiarra pra deixar a imagem do carrossel clicável (porque o componente não passa o onClick direto)
   useEffect(() => {
-    const interval = setInterval(() => {
-      const ativo = document.querySelector(".carousel-item.active img");
-      if (ativo && !ativo.dataset.clickHandler) {
-        ativo.dataset.clickHandler = "true";
-        ativo.style.cursor = "pointer"; 
+    const temporizador = setInterval(() => {
+      const imagemAtiva = document.querySelector(".carousel-item.active img");
 
-        ativo.onclick = () => {
-          const filme = filmes.find((f) => f.titulo === ativo.alt);
-          if (filme) handleFilmeClick(filme);
-        };
+      if (imagemAtiva && !imagemAtiva.dataset.cliqueJaFoi) {
+        imagemAtiva.dataset.cliqueJaFoi = "true";
+        imagemAtiva.style.cursor = "pointer";
+
+        imagemAtiva.addEventListener("click", () => {
+          const tituloDaImagem = imagemAtiva.alt;
+          const filmeAchado = filmes.find((f) => f.titulo === tituloDaImagem);
+
+          if (filmeAchado) {
+            abrirPaginaDoFilme(filmeAchado);
+          }
+        });
       }
-    }, 500);
+    }, 700);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(temporizador);
   }, [filmes]);
 
   return (
     <div className="home-wrapper">
       <main className="container">
         <h1 className="titulo flex gap-2 items-center justify-center">
-          🎬 Destaques da semana
+          Destaques da semana
         </h1>
 
-        {erro && <p className="erro">{erro}</p>}
+        {mensagemErro && <p className="erro">{mensagemErro}</p>}
 
-        {/* Carrossel intacto */}
+        {/* carrossel com os 5 primerios filmes */}
         <Carrossel filmes={filmes.slice(0, 5)} />
 
-        <h2 className="titulo flex gap-2 items-center justify-center">
-          📚 Filmes disponíveis
+        <h2 className="titulo flex gap-2 items-center justify-center mt-10">
+          Todos os filmes disponíveis
         </h2>
 
         <div className="grid-filmes">
           {filmes.map((filme) => (
-            <FilmeCard
+            <CardFilme
               key={filme.id}
               filme={filme}
-              onClick={() => handleFilmeClick(filme)}
+              onClick={() => abrirPaginaDoFilme(filme)}
             />
           ))}
         </div>
