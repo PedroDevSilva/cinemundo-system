@@ -6,7 +6,7 @@ export default function Header() {
     <header className="header">
       <Link href="/">
         <div className="logo">
-          <img src="/img/logo.png" alt="Logo" className="logo-img" />
+          <img src="/img/logo.svg" alt="Logo" className="logo-img" />
           <span>CineMundo</span>
         </div>
       </Link>
