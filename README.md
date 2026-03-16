@@ -36,7 +36,8 @@ O projeto possui uma arquitetura simples separando responsabilidades entre inter
 ProjetoPratica
 │
 ├── frontend
-│   └── 
+│   ├─ public
+│   └── src
 │
 ├── backend
 │   ├── routes
@@ -50,7 +51,7 @@ Essa separação facilita manutenção, evolução do sistema e organização do
 
 ---
 
-⚙️ Funcionalidades
+Funcionalidades
 
 O sistema permite:
 
@@ -65,27 +66,27 @@ Toda comunicação entre frontend e backend ocorre através de requisições HTT
 
 ---
 
-🖥️ Como Executar o Projeto
+Como Executar o Projeto
 
-1️⃣ Clonar o repositório
+Clonar o repositório
 
 git clone https://github.com/PedroDevSilva/ProjetoPraticaAPI.git
 
 ---
 
-2️⃣ Instalar dependências do backend
+Instalar dependências do backend
 
 npm install
 
 ---
 
-3️⃣ Configurar o banco de dados
+Configurar o banco de dados
 
 Execute o script SQL disponível no projeto para criação das tabelas necessárias.
 
 ---
 
-4️⃣ Iniciar o servidor
+Iniciar o servidor
 
 node server.js
 
@@ -95,13 +96,13 @@ http://localhost:3000
 
 ---
 
-5️⃣ Executar o frontend
+Executar o frontend
 
 Abra o arquivo HTML principal do projeto no navegador ou utilize um servidor local.
 
 ---
 
-🔗 Comunicação Frontend ↔ Backend
+Comunicação Frontend ↔ Backend
 
 O frontend consome os endpoints da API utilizando requisições HTTP para:
 
@@ -112,7 +113,7 @@ O frontend consome os endpoints da API utilizando requisições HTTP para:
 
 ---
 
-📚 Objetivo do Projeto
+Objetivo do Projeto
 
 Este projeto foi desenvolvido com o objetivo de praticar conceitos fundamentais de desenvolvimento web:
 
@@ -124,8 +125,8 @@ Este projeto foi desenvolvido com o objetivo de praticar conceitos fundamentais 
 
 ---
 
-👨‍💻 Autor
+Autor
 
 Pedro Silva
-Gabriel
-Estudante de Desenvolvimento de Sistemas
+Gabriel Fonseca
+Estudantes de Desenvolvimento de Sistemas
