@@ -1,0 +1,63 @@
+-- GENEROS
+insert into Genero (nome, descricao) values 
+('Ação', 'Filmes com muita ação'),
+('Animação', 'Filmes animados'),
+('Terror', 'Filmes de terror'),
+('Fantasia', 'Mundo fictício'),
+('Aventura', 'Jornadas e exploração');
+
+-- FORMAS DE PAGAMENTO
+insert into FormaPagamento (descricao, valorAcrescimo) values
+('Cartão Crédito', 0.00),
+('Cartão Débito', 0.00),
+('Pix', 0.00),
+('Dinheiro', 0.00);
+
+-- ASSENTOS
+insert into Assento (numCadeira, numFileira) values
+(1,1),(2,1),(3,1),
+(1,2),(2,2),(3,2);
+
+-- CLIENTES
+insert into Cliente (CPF, nomeCompleto, dataAniversario, enderecoCompleto, celular, email, senha, pagaMeiaEntrada) values
+('12345678901','Pedro Silva','2000-05-10','Rua A, 123','11999999999','pedro@email.com','123456',1),
+('98765432100','Maria Souza','1995-08-20','Rua B, 456','11888888888','maria@email.com','123456',0);
+
+-- FILMES (usando imagens da sua pasta)
+insert into Filme (titulo, sinopse, diretor, elenco, classificacaoIndicativa, duracao, poster, anoLancamento, produtora) values
+('Capitão América','Herói da Marvel','Diretor X','Ator A, Ator B','12',120,'/img/captainAmerica.jpeg',2024,'Marvel'),
+('Chainsaw Man','Demônios e caos','Diretor Y','Denji','16',110,'/img/chainsawMan2025.webp',2025,'MAPPA'),
+('Demon Slayer','Caçadores de demônio','Diretor Z','Tanjiro','14',130,'/img/demonSlayer.webp',2023,'Ufotable'),
+('Homem Com H','História nacional','Diretor BR','Ator BR','16',100,'/img/homemComH.webp',2024,'Brasil Filmes'),
+('Karate Kid','Artes marciais','Diretor A','Jaden Smith','10',115,'/img/karateKidLendas.webp',2010,'Sony'),
+('Lilo & Stitch','Amizade alienígena','Disney','Lilo','Livre',90,'/img/liloStitch.webp',2002,'Disney'),
+('Minecraft','Baseado no jogo','Diretor Game','Steve','Livre',105,'/img/minecraft.webp',2025,'Mojang'),
+('Premonição','Morte inevitável','Diretor Terror','Elenco X','18',100,'/img/premonicao6.jpg',2025,'Warner'),
+('Thunderbolts','Anti-heróis','Marvel','Elenco Marvel','14',120,'/img/thunderbolts.webp',2025,'Marvel'),
+('Tron Ares','Mundo digital','Disney','Elenco Tron','12',130,'/img/tronAres.jpg',2025,'Disney'),
+('Wicked','Musical mágico','Diretor Musical','Elenco Broadway','10',140,'/img/wickedForGod2025.webp',2025,'Universal'),
+('Wolf Man','Lobisomem','Diretor Terror','Elenco Dark','18',110,'/img/wolfMan2025.webp',2025,'Universal');
+
+-- RELACIONANDO FILMES E GENEROS
+insert into Filme_genero (filmeId, generoId) values
+(1,1),(1,5),
+(2,1),(2,4),
+(3,1),(3,4),
+(6,2),(6,4),
+(8,3),
+(12,3);
+
+-- PAGAMENTO
+insert into Pagamento (dataHora, valorPago, formaPagamentoId) values
+(GETDATE(), 30.00, 1),
+(GETDATE(), 15.00, 3);
+
+-- INGRESSOS
+insert into Ingresso (numero, dataHora, valorTotal, tipoIngresso, assentoId, pagamentoId) values
+('ING001', GETDATE(), 30.00, 'INTEIRA', 1, 1),
+('ING002', GETDATE(), 15.00, 'MEIA', 2, 2);
+
+-- ACESSO
+insert into Acesso (dataHora, clienteId) values
+(GETDATE(),1),
+(GETDATE(),2);

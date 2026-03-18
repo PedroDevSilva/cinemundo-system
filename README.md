@@ -80,25 +80,29 @@ npm install
 
 ---
 
-Configurar o banco de dados
+Configurar o banco de dados (SQL Server/mssql)
+Crie um .env na pasta /backend com essas informações:
+DB_USER=XXXXXX
+DB_PASS=XXXXXX
+DB_SERVER=XXXXXXX
+DB_DATABASE=XXXXXX
+DB_PORT=XXXX
 
-Execute o script SQL disponível no projeto para criação das tabelas necessárias.
+Execute o script SQL disponível no projeto para criação e inserts nas tabelas necessárias.
 
 ---
 
 Iniciar o servidor
 
-node server.js
+npm run dev
+no console no diretorio base do projeto
 
 O backend ficará disponível em:
 
+http://localhost:8081/"nomeDaTabelaASerAcessada"
+
+E o frontend no 
 http://localhost:3000
-
----
-
-Executar o frontend
-
-Abra o arquivo HTML principal do projeto no navegador ou utilize um servidor local.
 
 ---
 
