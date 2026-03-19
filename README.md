@@ -1,53 +1,55 @@
-Sistema de Cinema – Projeto Full Stack
+Sistema de Cinema – Full Stack
 
-Aplicação web completa para gerenciamento e visualização de informações de um sistema de cinema.
+Aplicação web full stack para gerenciamento de um sistema de cinema, permitindo visualizar, criar e manipular dados através de uma API REST integrada a uma interface web.
 
-O projeto é composto por:
+---
 
-- Frontend: interface web simples para interação do usuário
-- Backend: API REST responsável pelo processamento das requisições e comunicação com o banco de dados
+Sobre o Projeto
 
-A aplicação permite visualizar e manipular dados através de uma interface conectada a uma API estruturada seguindo padrões REST.
+Este projeto simula um sistema de cinema com funcionalidades básicas de gerenciamento, incluindo cadastro de entidades, visualização de dados e operações CRUD completas.
+
+A aplicação foi desenvolvida com foco em aprendizado prático de arquitetura web, separação de responsabilidades e integração entre frontend e backend.
 
 ---
 
 Tecnologias Utilizadas
 
 Frontend
-
 - ReactJS
+- Consumo de API REST
+- Renderização dinâmica de dados
 
 Backend
-
 - Node.js
 - Express
-- API REST
+- Arquitetura em camadas:
+  - routes
+  - controllers
+  - models
 
 Banco de Dados
-
-- SQL
+- SQL Server (ou compatível)
+- Modelagem relacional com uso de chaves estrangeiras
 
 ---
 
 Arquitetura do Projeto
 
-O projeto possui uma arquitetura simples separando responsabilidades entre interface, lógica da aplicação e persistência de dados.
 
 ProjetoPratica
 │
 ├── frontend
-│   ├─ public
-│   └── src
+│ ├── public
+│ └── src
 │
 ├── backend
-│   ├── routes
-│   ├── controllers
-│   ├── models
-│   └── server.js
+│ ├── routes # Rotas da API
+│ ├── controllers # Lógica das requisições
+│ ├── models # Acesso ao banco
+│ └── server.js # Inicialização do servidor
 │
-└── database
+└── database # Scripts SQL (schema + inserts)
 
-Essa separação facilita manutenção, evolução do sistema e organização do código.
 
 ---
 
@@ -55,14 +57,11 @@ Funcionalidades
 
 O sistema permite:
 
-- Visualizar dados através da interface web
-- Enviar requisições para a API
-- Criar registros
-- Listar registros existentes
-- Atualizar informações
-- Remover registros do banco de dados
-
-Toda comunicação entre frontend e backend ocorre através de requisições HTTP.
+- Visualizar registros (filmes, clientes, etc.)
+- Criar novos dados
+- Atualizar informações existentes
+- Remover registros
+- Comunicação completa entre frontend e backend via HTTP
 
 ---
 
@@ -70,67 +69,151 @@ Como Executar o Projeto
 
 Clonar o repositório
 
-git clone https://github.com/PedroDevSilva/ProjetoPraticaAPI.git
+No console:
 
----
+git clone https://github.com/PedroDevSilva/cinemundo-system.git
 
-Instalar dependências do backend
-
+Configurar o Backend:
+cd backend
 npm install
 
----
+Crie um arquivo .env:
 
-Configurar o banco de dados (SQL Server/mssql)
-Crie um .env na pasta /backend com essas informações:
 DB_USER=XXXXXX
 DB_PASS=XXXXXX
 DB_SERVER=XXXXXXX
 DB_DATABASE=XXXXXX
 DB_PORT=XXXX
 
-Execute o script SQL disponível no projeto para criação e inserts nas tabelas necessárias.
+Baixar dependencias do front:
+cd frontend
+npm install
 
----
+Baixar dependencias da base:
+na pasta raiz:
+npm install
 
-Iniciar o servidor
+Execute os scripts SQL disponíveis na pasta /database.
 
-npm run dev
-no console no diretorio base do projeto
+API disponível em:
 
-O backend ficará disponível em:
+http://localhost:8081/{TABELA}
 
-http://localhost:8081/"nomeDaTabelaASerAcessada"
+Exemplo de endpoint:
 
-E o frontend no 
+http://localhost:8081/filme
+
+
+A aplicação estará disponível em:
+
 http://localhost:3000
+Comunicação Frontend - Backend
 
----
+Rodar o projeto:
+  npm run dev
+  no console dentro do diretorio base do projeto (Já inicia back e depois front)
 
-Comunicação Frontend ↔ Backend
+O frontend consome a API utilizando requisições HTTP para:
 
-O frontend consome os endpoints da API utilizando requisições HTTP para:
+GET → buscar dados
 
-- obter dados
-- enviar novos registros
-- atualizar informações
-- excluir registros
+POST → criar registros
 
----
+PUT → atualizar dados(somente na api)
+
+DELETE → remover registros (somente na api)
+
+Imagens
+
+Os posters dos filmes são armazenados localmente em:
+
+/frontend/public/img
+
+E referenciados no banco de dados via:
+
+/img/nomeDoArquivo.webp
+Limitações Atuais
+
+O sistema ainda está em estágio inicial e possui limitações importantes:
+
+ Não possui controle de sessões (horários de filmes)
+
+ Ingressos não estão vinculados diretamente a exibições
+
+ Não há autenticação de usuários
+
+ Senhas não estão criptografadas
+
+ Validações ainda são básicas
+
+Possíveis Melhorias e Evoluções
+
+  Modelagem de Cinema Real
+
+  Implementação de Sala
+
+  Implementação de Sessao (filme + horário + sala)
+
+  Controle de assentos por sessão
+
+Segurança
+
+  Hash de senha com bcrypt
+
+  Autenticação com JWT
+
+  Controle de permissões
+
+Pagamentos
+
+  Integração com gateways de pagamento
+
+  Histórico de transações
+
+  Cancelamento e reembolso
+
+Sistema Administrativo
+
+  Dashboard
+
+  Relatórios de vendas
+
+  Controle de ocupação
+
+Frontend
+
+  Interface mais moderna
+
+  Responsividade
+
+  Melhor experiência do usuário (UX)
+
+  Infraestrutura
+
+  Deploy em nuvem
+
+  Uso de CDN para imagens
+
+  Armazenamento externo (S3 ou similar)
 
 Objetivo do Projeto
 
-Este projeto foi desenvolvido com o objetivo de praticar conceitos fundamentais de desenvolvimento web:
+  Este projeto foi desenvolvido com foco em:
 
-- criação de APIs REST
-- integração frontend e backend
-- manipulação de banco de dados
-- estruturação de aplicações web
-- comunicação cliente-servidor
+  construção de APIs REST
 
----
+  integração frontend/backend
 
-Autor
+  modelagem de banco de dados
 
-Pedro Silva
-Gabriel Fonseca
+  organização de código em camadas
+
+  desenvolvimento de aplicações completas
+
+Autores
+
+  Pedro Silva
+
+  Gabriel Fonseca
+
 Estudantes de Desenvolvimento de Sistemas
