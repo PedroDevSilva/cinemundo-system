@@ -68,11 +68,11 @@ export default function FilmeDescricao({ params }) {
         body: JSON.stringify({
           numero: numeroIngresso,
           dataHora: new Date().toISOString(),
-          valorTotal: 35.90,
+          valorTotal: 35.90, //valor fixo, ja que meia e inteira nao estao implementadas ainda
           tipoIngresso: "inteira",
           clienteId: clienteId,
-          assentoId: null,  
-          pagamentoId: null,
+          assentoId: 1,  //para intuito de testes, ja que funcao de assentos nao está implementada
+          pagamentoId: 1,//para intuito de testes, ja que função de seleção de pagamento nao está implementada
         }),
       });
 
